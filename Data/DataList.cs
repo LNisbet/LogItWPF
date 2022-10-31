@@ -13,7 +13,7 @@ namespace WpfLogIt.Data
         private string name = "";
         private string description = "";
         private string colour = "";
-        private List<DataUnit> dataUnits =new();
+        private List<DataUnit> dataUnits = new();
         public DataList(int id, string name, string discription, string colour)
         {
             ID = id;

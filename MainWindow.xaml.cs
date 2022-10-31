@@ -22,18 +22,41 @@ namespace WpfLogIt
     /// </summary>
     public partial class MainWindow : Window
     {
-        DataUnit dataUnit = new(0, "0", "kg", "1234", "");
+        int ID = 0;
+        string idUI = "0";
         DataList dataList1 = new(1, "test", "for testing", "blue");
+
         public MainWindow()
         {
             InitializeComponent();
             DataListBox.ItemsSource = dataList1.DataUnits;
         }
 
-        private void AddClickedAsync(object sender, RoutedEventArgs e)
+        private void ADD_Click(object sender, RoutedEventArgs e)
         {
-            dataUnit.ID++;
-            dataList1.AddDataUnit(dataUnit);
+            ID++;
+            DataUnit dU = new(ID, "0", "kg", "1234", "");
+            dataList1.AddDataUnit(dU);
+        }
+
+        private void TEST_Click(object sender, RoutedEventArgs e)
+        {
+            string text = "";
+            foreach (DataUnit dU in dataList1.DataUnits)
+            {
+                text = text + " ," + Convert.ToString(dU.ID);
+            }
+            MessageBox.Show(text);
+        }
+
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            dataList1.DeleteDataUnit(Convert.ToInt32(idUI));
         }
     }
 }

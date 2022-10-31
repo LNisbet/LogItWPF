@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel x:Name="MainSP">
-        <Button x:Name="Add" Content="Add" Click="AddClickedAsync"/>
+        <TextBox x:Name="idUITBox" Text="idUI"/>
+        <Button x:Name="Add" Content="Add" Click="ADD_Click"/>
+        <Button x:Name="Update" Content="Update" Click="Update_Click"/>
+        <Button x:Name="Delete" Content="Delete" Click="Delete_Click"/>
+        <Button x:Name="TEST" Content="TEST" Click="TEST_Click"/>
         <ListBox x:Name="DataListBox" Width="auto" Height="300" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -16,11 +20,11 @@
                             <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="200"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding ID}" Margin="20,0,0,0"/>
-                        <TextBlock Grid.Column="1" Text="{Binding Date}" Margin="20,0,0,0"/>
-                        <TextBlock Grid.Column="1" Text="{Binding Unit}" Margin="20,0,0,0"/>
-                        <TextBlock Grid.Column="1" Text="{Binding Data}" Margin="20,0,0,0"/>
-                        <TextBlock Grid.Column="1" Text="{Binding Comments}" Margin="20,0,0,0"/>
+                        <TextBlock Grid.Column="0" Text="{Binding ID}" Margin="20,0,0,0" Width="200"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Date}" Margin="20,0,0,0" Width="200"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Unit}" Margin="20,0,0,0" Width="200"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Data}" Margin="20,0,0,0" Width="200"/>
+                        <TextBlock Grid.Column="4" Text="{Binding Comments}" Margin="20,0,0,0" Width="200"/>
 
                     </Grid>
                 </DataTemplate>
