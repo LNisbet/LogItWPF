@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -10,9 +12,9 @@ namespace WpfLogIt.Data
     public class DataList : IDataList<DataUnit>
     {
         private int id;
-        private string name = "";
-        private string description = "";
-        private string colour = "";
+        private string name;
+        private string description;
+        private string colour;
         private List<DataUnit> dataUnits = new();
         public DataList(int id, string name, string discription, string colour)
         {
@@ -21,33 +23,33 @@ namespace WpfLogIt.Data
             Description = discription;
             Colour = colour;
         }
-
+        #region Get Set
         public int ID
         {
             get { return id; }
-            set { id = value; }
+            set { id = value; OnPropertyChanged(); }
         }
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set { if (value == null) { throw new NullValueException("Name"); } else { name = value; } OnPropertyChanged(); }
         }
         public string Description
         {
             get { return description; }
-            set { description = value; }
+            set { if (value == null) { throw new NullValueException("Description"); } else { description = value; } OnPropertyChanged(); }
         }
         public string Colour
         {
             get { return colour; }
-            set { colour = value; }
+            set { if (value == null) { throw new NullValueException("Colour"); } else { colour = value; } OnPropertyChanged(); }
         }
         public List<DataUnit> DataUnits
         {
             get { return dataUnits; }
-            set { dataUnits = value; }
+            set { dataUnits = value; OnPropertyChanged(); }
         }
-
+        #endregion
         public void AddDataUnit(DataUnit dataUnit)
         {
             DataUnits.Add(dataUnit);
@@ -70,16 +72,31 @@ namespace WpfLogIt.Data
             { 
                 dataUnits.Remove(oldDataUnit);
             }
+            ReorderIDs();
         }
 
         public DataUnit GetDataUnit(int id)
         {
-            DataUnit dU = new(id,"","","","");
-            if (dataUnits.Where((arg) => arg.ID == id).FirstOrDefault() != null)
+            var dU = dataUnits.Where((arg) => arg.ID == id).FirstOrDefault();
+            if (dU == null)
             {
-                dU = dataUnits.Where((arg) => arg.ID == id).FirstOrDefault();
+                throw new NotImplementedException();
             }
             return dU; 
+        }
+        private void ReorderIDs()
+        {
+            int newID = 1;
+            foreach (DataUnit dU in dataUnits)
+            {
+                dU.ID = newID;
+                newID++;
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

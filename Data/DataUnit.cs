@@ -9,15 +9,15 @@ using System.Xml.Linq;
 
 namespace WpfLogIt.Data
 {
-    public class DataUnit : IDataUnit, INotifyPropertyChanged
+    public class DataUnit : INotifyPropertyChanged
     {
         private int id;
-        private string date = "";
-        private string unit = "";
-        private string data = "";
-        private string comments = "";
+        private DateOnly date;
+        private string unit;
+        private string data;
+        private string comments;
 
-        public DataUnit(int id, string date, string unit, string data, string comments)
+        public DataUnit(int id, DateOnly date, string unit, string data, string comments)
         {
             ID = id;
             Date = date;
@@ -31,25 +31,25 @@ namespace WpfLogIt.Data
             get { return id; }
             set { id = value; OnPropertyChanged(); }
         }
-        public string Date
+        public DateOnly Date
         {
             get { return date; }
-            set { if (value == null) { date = ""; } else { date = value; } OnPropertyChanged(); }
+            set { date = value; OnPropertyChanged(); }
         }
         public string Unit
         {
             get { return unit; }
-            set { if (value == null) { unit = ""; } else { unit = value; } OnPropertyChanged(); }
+            set { if (value == null) { throw new NullValueException("Unit"); } else { unit = value; } OnPropertyChanged(); }
         }
         public string Data
         {
             get { return data; }
-            set { if (value == null) { data = ""; } else { data = value; } OnPropertyChanged(); }
+            set { if (value == null) { throw new NullValueException("Data"); } else { data = value; } OnPropertyChanged(); }
         }
         public string Comments
         {
             get { return comments; }
-            set { if (value == null) { comments = ""; } else { comments = value; } OnPropertyChanged(); }
+            set { if (value == null) { throw new NullValueException("Comments"); } else { comments = value; } OnPropertyChanged(); }
         }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)

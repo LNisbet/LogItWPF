@@ -9,15 +9,15 @@
     <StackPanel x:Name="MainSP">
         <StackPanel Orientation="Horizontal" Name="inputSP">
             <TextBlock Text="idUI"/>
-            <TextBox x:Name="idUITBox" Text="{Binding Path=idUI}" Width="100"/>
+            <TextBox x:Name="idUITBox" Text="{Binding Path=IdUI}" Width="100"/>
             <TextBlock Text="dateUI"/>
-            <TextBox x:Name="dateUITBox" Text="{Binding Path=dateUI}" Width="100"/>
+            <TextBox x:Name="dateUITBox" Text="{Binding Path=DateUI}" Width="100"/>
             <TextBlock Text="unitUI"/>
-            <TextBox x:Name="unitUITBox" Text="{Binding Path=unitUI}" Width="100"/>
+            <TextBox x:Name="unitUITBox" Text="{Binding Path=UnitUI}" Width="100"/>
             <TextBlock Text="dataUI"/>
-            <TextBox x:Name="dataUITBox" Text="{Binding Path=dataUI}" Width="100"/>
+            <TextBox x:Name="dataUITBox" Text="{Binding Path=DataUI}" Width="100"/>
             <TextBlock Text="commentsUI"/>
-            <TextBox x:Name="commentsUITBox" Text="{Binding Path=commentsUI}" Width="100"/>
+            <TextBox x:Name="commentsUITBox" Text="{Binding Path=CommentsUI}" Width="100"/>
         </StackPanel>
         
         <Button x:Name="Add" Content="Add" Click="ADD_Click"/>

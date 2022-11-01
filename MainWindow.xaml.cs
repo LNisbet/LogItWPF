@@ -23,11 +23,18 @@ namespace WpfLogIt
     public partial class MainWindow : Window
     {
         int ID = 0;
-        public string idUI { get; set; }
-        public string dateUI { get; set; }
-        public string unitUI { get; set; }
-        public string dataUI { get; set; }
-        public string commentsUI { get; set; }
+        public string IdUI { get; set; }
+
+        private DateOnly dateUI;
+
+        public string DateUI
+        {
+            get { return Convert.ToString(dateUI); }
+            set { dateUI = DateOnly.Parse(value); }
+        }
+        public string UnitUI { get; set; }
+        public string DataUI { get; set; }
+        public string CommentsUI { get; set; }
 DataList dataList1 = new(1, "test", "for testing", "blue");
 
         public MainWindow()
@@ -44,31 +51,31 @@ DataList dataList1 = new(1, "test", "for testing", "blue");
         private void ADD_Click(object sender, RoutedEventArgs e)
         {
             ID++;
-            DataUnit dU = new(ID, dateUI, unitUI, dataUI, commentsUI);
+            DataUnit dU = new(ID, dateUI, UnitUI, DataUI, CommentsUI);
             dataList1.AddDataUnit(dU);
         }
 
         private void TEST_Click(object sender, RoutedEventArgs e)
         {
-            DataUnit dU = new(0, "", "", "", "");
+            DataUnit dU = new(0, DateOnly.MinValue, "", "", "");
             foreach (DataUnit dU_ in dataList1.DataUnits)
             {
-                if (dU_.ID == Convert.ToInt32(idUI)) { dU = dU_; break; }
+                if (dU_.ID == Convert.ToInt32(IdUI)) { dU = dU_; break; }
             }
 
-            string text = Convert.ToString(dU.ID) + " ," + dU.Date + " ," + dU.Unit + " ," + dU.Data + " ," + dU.Comments; ;
+            string text = Convert.ToString(dU.ID) + " ," + Convert.ToString(dU.Date) + " ," + dU.Unit + " ," + dU.Data + " ," + dU.Comments; ;
 
             MessageBox.Show(text);
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            dataList1.UpdateDataUnit(new DataUnit(Convert.ToInt32(idUI), dateUI, unitUI, dataUI, commentsUI));
+            dataList1.UpdateDataUnit(new DataUnit(Convert.ToInt32(IdUI), dateUI, UnitUI, DataUI, CommentsUI));
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            dataList1.DeleteDataUnit(Convert.ToInt32(idUI));
+            dataList1.DeleteDataUnit(Convert.ToInt32(IdUI));
         }
     }
 }
