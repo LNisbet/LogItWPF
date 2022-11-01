@@ -20,7 +20,6 @@ namespace WpfLogIt.Data
             Name = name;
             Description = discription;
             Colour = colour;
-
         }
 
         public int ID

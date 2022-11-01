@@ -7,7 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel x:Name="MainSP">
-        <TextBox x:Name="idUITBox" Text="idUI"/>
+        <StackPanel Orientation="Horizontal" Name="inputSP">
+            <TextBlock Text="idUI"/>
+            <TextBox x:Name="idUITBox" Text="{Binding Path=idUI}" Width="100"/>
+            <TextBlock Text="dateUI"/>
+            <TextBox x:Name="dateUITBox" Text="{Binding Path=dateUI}" Width="100"/>
+            <TextBlock Text="unitUI"/>
+            <TextBox x:Name="unitUITBox" Text="{Binding Path=unitUI}" Width="100"/>
+            <TextBlock Text="dataUI"/>
+            <TextBox x:Name="dataUITBox" Text="{Binding Path=dataUI}" Width="100"/>
+            <TextBlock Text="commentsUI"/>
+            <TextBox x:Name="commentsUITBox" Text="{Binding Path=commentsUI}" Width="100"/>
+        </StackPanel>
+        
         <Button x:Name="Add" Content="Add" Click="ADD_Click"/>
         <Button x:Name="Update" Content="Update" Click="Update_Click"/>
         <Button x:Name="Delete" Content="Delete" Click="Delete_Click"/>
