@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfLogIt.Data;
+using WpfLogIt.Data.Generic;
 
 namespace WpfLogIt
 {
@@ -35,12 +36,12 @@ namespace WpfLogIt
         public string UnitUI { get; set; }
         public string DataUI { get; set; }
         public string CommentsUI { get; set; }
-DataList dataList1 = new(1, "test", "for testing", "blue");
+        List_DataUnit dataList1 = new(1, "test", "for testing", "blue");
 
         public MainWindow()
         {
             InitializeComponent();
-            DataListBox.ItemsSource = dataList1.DataUnits;
+            DataListBox.ItemsSource = dataList1.Objects;
             idUITBox.DataContext = this;
             dataUITBox.DataContext = this;
             unitUITBox.DataContext = this;
@@ -52,13 +53,13 @@ DataList dataList1 = new(1, "test", "for testing", "blue");
         {
             ID++;
             DataUnit dU = new(ID, dateUI, UnitUI, DataUI, CommentsUI);
-            dataList1.AddDataUnit(dU);
+            dataList1.AddObject(dU);
         }
 
         private void TEST_Click(object sender, RoutedEventArgs e)
         {
             DataUnit dU = new(0, DateOnly.MinValue, "", "", "");
-            foreach (DataUnit dU_ in dataList1.DataUnits)
+            foreach (DataUnit dU_ in dataList1.Objects)
             {
                 if (dU_.ID == Convert.ToInt32(IdUI)) { dU = dU_; break; }
             }
@@ -70,12 +71,12 @@ DataList dataList1 = new(1, "test", "for testing", "blue");
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            dataList1.UpdateDataUnit(new DataUnit(Convert.ToInt32(IdUI), dateUI, UnitUI, DataUI, CommentsUI));
+            dataList1.UpdateObject(new DataUnit(Convert.ToInt32(IdUI), dateUI, UnitUI, DataUI, CommentsUI));
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            dataList1.DeleteDataUnit(Convert.ToInt32(IdUI));
+            dataList1.DeleteObject(Convert.ToInt32(IdUI));
         }
     }
 }

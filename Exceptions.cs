@@ -12,7 +12,7 @@ namespace WpfLogIt
     public class NullValueException : Exception
     {
         public NullValueException() { }
-        public NullValueException(string message) : base(message) { MessageBox.Show(message + "can not be Null"); }
+        public NullValueException(string message) : base(message) { MessageBox.Show(message); }
         public NullValueException(string message, Exception inner) : base(message, inner) { }
         protected NullValueException(
           System.Runtime.Serialization.SerializationInfo info,

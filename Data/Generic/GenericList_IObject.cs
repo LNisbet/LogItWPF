@@ -5,18 +5,19 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml.Linq;
 
-namespace WpfLogIt.Data
+namespace WpfLogIt.Data.Generic
 {
-    public class DataList : IDataList<DataUnit>
+    public class GenericList_IObject : IObjectList<IObject>, IObject
     {
         private int id;
         private string name;
         private string description;
         private string colour;
-        private List<DataUnit> dataUnits = new();
-        public DataList(int id, string name, string discription, string colour)
+        private List<IObject> objects = new();
+        public GenericList_IObject(int id, string name, string discription, string colour)
         {
             ID = id;
             Name = name;
@@ -44,52 +45,52 @@ namespace WpfLogIt.Data
             get { return colour; }
             set { if (value == null) { throw new NullValueException("Colour"); } else { colour = value; } OnPropertyChanged(); }
         }
-        public List<DataUnit> DataUnits
+        public List<IObject> Objects
         {
-            get { return dataUnits; }
-            set { dataUnits = value; OnPropertyChanged(); }
+            get { return objects; }
+            set { objects = value; OnPropertyChanged(); }
         }
         #endregion
-        public void AddDataUnit(DataUnit dataUnit)
+        public void AddObject(IObject obj)
         {
-            DataUnits.Add(dataUnit);
+            Objects.Add(obj);
         }
 
-        public void UpdateDataUnit(DataUnit dataUnit)
+        public void UpdateObject(IObject obj)
         {
-            var oldDataUnit = dataUnits.Where((arg) => arg.ID == dataUnit.ID).FirstOrDefault();
-            if (oldDataUnit != null) 
+            var oldObj = objects.Where((arg) => arg.ID == obj.ID).FirstOrDefault();
+            if (oldObj != null)
             {
-                dataUnits.Remove(oldDataUnit);
+                objects.Remove(oldObj);
             }
-            dataUnits.Add(dataUnit);
+            objects.Add(obj);
         }
 
-        public void DeleteDataUnit(int id)
+        public void DeleteObject(int id)
         {
-            var oldDataUnit = dataUnits.Where((arg) => arg.ID == id).FirstOrDefault();
-            if (oldDataUnit != null)
-            { 
-                dataUnits.Remove(oldDataUnit);
+            var oldObj = objects.Where((arg) => arg.ID == id).FirstOrDefault();
+            if (oldObj != null)
+            {
+                objects.Remove(oldObj);
             }
             ReorderIDs();
         }
 
-        public DataUnit GetDataUnit(int id)
+        public IObject GetObject(int id)
         {
-            var dU = dataUnits.Where((arg) => arg.ID == id).FirstOrDefault();
-            if (dU == null)
+            var obj = objects.Where((arg) => arg.ID == id).FirstOrDefault();
+            if (obj == null)
             {
-                throw new NotImplementedException();
+                throw new NullValueException("No object with ID: " + Convert.ToString(id) + " in " + Name);
             }
-            return dU; 
+            return obj;
         }
         private void ReorderIDs()
         {
             int newID = 1;
-            foreach (DataUnit dU in dataUnits)
+            foreach (IObject obj in objects)
             {
-                dU.ID = newID;
+                obj.ID = newID;
                 newID++;
             }
         }

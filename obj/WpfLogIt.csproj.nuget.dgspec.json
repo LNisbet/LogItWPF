@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hog72784\\Desktop\\Repos\\LogItWPF\\WpfLogIt.csproj": {}
+    "C:\\Users\\luken\\OneDrive\\Desktop\\Repos\\WpfLogIt\\WpfLogIt.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hog72784\\Desktop\\Repos\\LogItWPF\\WpfLogIt.csproj": {
+    "C:\\Users\\luken\\OneDrive\\Desktop\\Repos\\WpfLogIt\\WpfLogIt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hog72784\\Desktop\\Repos\\LogItWPF\\WpfLogIt.csproj",
+        "projectUniqueName": "C:\\Users\\luken\\OneDrive\\Desktop\\Repos\\WpfLogIt\\WpfLogIt.csproj",
         "projectName": "WpfLogIt",
-        "projectPath": "C:\\Users\\hog72784\\Desktop\\Repos\\LogItWPF\\WpfLogIt.csproj",
-        "packagesPath": "C:\\Users\\hog72784\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hog72784\\Desktop\\Repos\\LogItWPF\\obj\\",
+        "projectPath": "C:\\Users\\luken\\OneDrive\\Desktop\\Repos\\WpfLogIt\\WpfLogIt.csproj",
+        "packagesPath": "C:\\Users\\luken\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\luken\\OneDrive\\Desktop\\Repos\\WpfLogIt\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hog72784\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\luken\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

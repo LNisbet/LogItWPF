@@ -6,10 +6,11 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using WpfLogIt.Data.Generic;
 
 namespace WpfLogIt.Data
 {
-    public class DataUnit : INotifyPropertyChanged
+    public class DataUnit : IObject, INotifyPropertyChanged
     {
         private int id;
         private DateOnly date;
@@ -39,17 +40,17 @@ namespace WpfLogIt.Data
         public string Unit
         {
             get { return unit; }
-            set { if (value == null) { throw new NullValueException("Unit"); } else { unit = value; } OnPropertyChanged(); }
+            set { if (value == null) { throw new NullValueException("Unit can't be Null"); } else { unit = value; } OnPropertyChanged(); }
         }
         public string Data
         {
             get { return data; }
-            set { if (value == null) { throw new NullValueException("Data"); } else { data = value; } OnPropertyChanged(); }
+            set { if (value == null) { throw new NullValueException("Data can't be Null"); } else { data = value; } OnPropertyChanged(); }
         }
         public string Comments
         {
             get { return comments; }
-            set { if (value == null) { throw new NullValueException("Comments"); } else { comments = value; } OnPropertyChanged(); }
+            set { if (value == null) { throw new NullValueException("Comments can't be Null"); } else { comments = value; } OnPropertyChanged(); }
         }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)
